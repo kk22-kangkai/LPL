@@ -1,0 +1,43 @@
+# Snapmaker Taxes Policy
+
+URL: https://support.snapmaker.com/hc/en-us/articles/30695677726615-Snapmaker-Taxes-Policy
+
+##  **VAT & Import Duties**
+
+International orders, taxes, customs duties, and import fees may apply depending on your country's regulations. Snapmaker follows standard international shipping policies, and customers are responsible for any applicable import taxes.
+
+##  **EU Countries**
+
+The price of the item on our EU sites includes VAT. The VAT rate is 19%. If you have a valid VAT ID, you may qualify for a VAT exemption. Please click [here](https://snapmaker.formcrafts.com/ebc4e0ec) to submit your information, and our customer service team will provide you with a coupon code to deduct the VAT. If no VAT ID is provided, VAT will be included in the final price at checkout.
+
+##  **United States**
+
+Sales tax may be applied at checkout, depending on your state/province. If you qualify for a sales tax exemption, please register an account on our official online store and email your tax-exempt certificate to our customer service team at info@snapmaker.com. Once verified, we will update your account to reflect the tax-exempt status.
+
+##  **United Kingdom**
+
+20% VAT will be charged on the checkout page.
+
+## **Canada**
+
+No additional customs duties for Canadian customers, as our products are shipped from local warehouses.
+
+## **Australia**
+
+No additional customs duties for Australian customers, as our products are shipped from local warehouses.
+
+##  **Switzerland/Norway/Other Countries**
+
+Import taxes, VAT, and duties are determined by local customs authorities.
+
+Customers are responsible for any applicable fees. Please check with your local customs office before placing an order. Here are the HS codes for Snapmaker products for your reference.
+
+Machine: 8485200000
+
+Modules/Accessories: 8485903000
+
+Materials: 3916909000
+
+##  **Tax Invoices**
+
+Official tax invoices can be provided upon request. Please contact our support team at info@snapmaker.com with your order details.
