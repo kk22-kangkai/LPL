@@ -1,0 +1,118 @@
+{
+ 
+  "Snapmaker A250 (0.2 nozzle)": "fdm_a250",
+  "Snapmaker A250 (0.4 nozzle)": "fdm_a250",
+  "Snapmaker A250 (0.6 nozzle)": "fdm_a250",
+  "Snapmaker A250 (0.8 nozzle)": "fdm_a250",
+
+  "Snapmaker A250 BKit (0.2 nozzle)": "fdm_a250_bk",
+  "Snapmaker A250 BKit (0.4 nozzle)": "fdm_a250_bk",
+  "Snapmaker A250 BKit (0.6 nozzle)": "fdm_a250_bk",
+  "Snapmaker A250 BKit (0.8 nozzle)": "fdm_a250_bk",
+
+  "Snapmaker A250 Dual (0.2 nozzle)": "fdm_a250_dual",
+  "Snapmaker A250 Dual (0.4 nozzle)": "fdm_a250_dual",
+  "Snapmaker A250 Dual (0.6 nozzle)": "fdm_a250_dual",
+  "Snapmaker A250 Dual (0.8 nozzle)": "fdm_a250_dual",
+
+  "Snapmaker A250 Dual BKit (0.2 nozzle)": "fdm_a250_dual_bk",
+  "Snapmaker A250 Dual BKit (0.4 nozzle)": "fdm_a250_dual_bk",
+  "Snapmaker A250 Dual BKit (0.6 nozzle)": "fdm_a250_dual_bk",
+  "Snapmaker A250 Dual BKit (0.8 nozzle)": "fdm_a250_dual_bk",
+
+  "Snapmaker A250 Dual QS+B Kit (0.2 nozzle)": "fdm_a250_dual_qs_bk",
+  "Snapmaker A250 Dual QS+B Kit (0.4 nozzle)": "fdm_a250_dual_qs_bk",
+  "Snapmaker A250 Dual QS+B Kit (0.6 nozzle)": "fdm_a250_dual_qs_bk",
+  "Snapmaker A250 Dual QS+B Kit (0.8 nozzle)": "fdm_a250_dual_qs_bk",
+
+  "Snapmaker A250 Dual QSKit (0.2 nozzle)": "fdm_a250_dual_qs",
+  "Snapmaker A250 Dual QSKit (0.4 nozzle)": "fdm_a250_dual_qs",
+  "Snapmaker A250 Dual QSKit (0.6 nozzle)": "fdm_a250_dual_qs",
+  "Snapmaker A250 Dual QSKit (0.8 nozzle)": "fdm_a250_dual_qs",
+
+  "Snapmaker A250 QS+B Kit (0.2 nozzle)": "fdm_a250_qs_bk",
+  "Snapmaker A250 QS+B Kit (0.4 nozzle)": "fdm_a250_qs_bk",
+  "Snapmaker A250 QS+B Kit (0.6 nozzle)": "fdm_a250_qs_bk",
+  "Snapmaker A250 QS+B Kit (0.8 nozzle)": "fdm_a250_qs_bk",
+
+  "Snapmaker A250 QSKit (0.2 nozzle)": "fdm_a250_qs",
+  "Snapmaker A250 QSKit (0.4 nozzle)": "fdm_a250_qs",
+  "Snapmaker A250 QSKit (0.6 nozzle)": "fdm_a250_qs",
+  "Snapmaker A250 QSKit (0.8 nozzle)": "fdm_a250_qs",
+
+  "Snapmaker A350 (0.2 nozzle)": "fdm_a350",
+  "Snapmaker A350 (0.4 nozzle)": "fdm_a350",
+  "Snapmaker A350 (0.6 nozzle)": "fdm_a350",
+  "Snapmaker A350 (0.8 nozzle)": "fdm_a350",
+
+  "Snapmaker A350 BKit (0.2 nozzle)": "fdm_a350_bk",
+  "Snapmaker A350 BKit (0.4 nozzle)": "fdm_a350_bk",
+  "Snapmaker A350 BKit (0.6 nozzle)": "fdm_a350_bk",
+  "Snapmaker A350 BKit (0.8 nozzle)": "fdm_a350_bk",
+
+  "Snapmaker A350 Dual (0.2 nozzle)": "fdm_a350_dual",
+  "Snapmaker A350 Dual (0.4 nozzle)": "fdm_a350_dual",
+  "Snapmaker A350 Dual (0.6 nozzle)": "fdm_a350_dual",
+  "Snapmaker A350 Dual (0.8 nozzle)": "fdm_a350_dual",
+
+  "Snapmaker A350 Dual BKit (0.2 nozzle)": "fdm_a350_dual_bk",
+  "Snapmaker A350 Dual BKit (0.4 nozzle)": "fdm_a350_dual_bk",
+  "Snapmaker A350 Dual BKit (0.6 nozzle)": "fdm_a350_dual_bk",
+  "Snapmaker A350 Dual BKit (0.8 nozzle)": "fdm_a350_dual_bk",
+
+  "Snapmaker A350 Dual QS+B Kit (0.2 nozzle)": "fdm_a350_dual_qs_bk",
+  "Snapmaker A350 Dual QS+B Kit (0.4 nozzle)": "fdm_a350_dual_qs_bk",
+  "Snapmaker A350 Dual QS+B Kit (0.6 nozzle)": "fdm_a350_dual_qs_bk",
+  "Snapmaker A350 Dual QS+B Kit (0.8 nozzle)": "fdm_a350_dual_qs_bk",
+
+  "Snapmaker A350 Dual QSKit (0.2 nozzle)": "fdm_a350_dual_qs",
+  "Snapmaker A350 Dual QSKit (0.4 nozzle)": "fdm_a350_dual_qs",
+  "Snapmaker A350 Dual QSKit (0.6 nozzle)": "fdm_a350_dual_qs",
+  "Snapmaker A350 Dual QSKit (0.8 nozzle)": "fdm_a350_dual_qs",
+
+  "Snapmaker A350 QS+B Kit (0.2 nozzle)": "fdm_a350_qs_bk",
+  "Snapmaker A350 QS+B Kit (0.4 nozzle)": "fdm_a350_qs_bk",
+  "Snapmaker A350 QS+B Kit (0.6 nozzle)": "fdm_a350_qs_bk",
+  "Snapmaker A350 QS+B Kit (0.8 nozzle)": "fdm_a350_qs_bk",
+
+  "Snapmaker A350 QSKit (0.2 nozzle)": "fdm_a350_qs",
+  "Snapmaker A350 QSKit (0.4 nozzle)": "fdm_a350_qs",
+  "Snapmaker A350 QSKit (0.6 nozzle)": "fdm_a350_qs",
+  "Snapmaker A350 QSKit (0.8 nozzle)": "fdm_a350_qs",
+
+  "Snapmaker Artisan (0.2 nozzle)": "fdm_a400",
+  "Snapmaker Artisan (0.4 nozzle)": "fdm_a400",
+  "Snapmaker Artisan (0.6 nozzle)": "fdm_a400",
+  "Snapmaker Artisan (0.8 nozzle)": "fdm_a400",
+
+  "Snapmaker J1 (0.2 nozzle)": "fdm_idex",
+  "Snapmaker J1 (0.4 nozzle)": "fdm_idex",
+  "Snapmaker J1 (0.6 nozzle)": "fdm_idex",
+  "Snapmaker J1 (0.8 nozzle)": "fdm_idex",
+
+  "Snapmaker test (0.4 nozzle)": "fdm_test",
+  "fdm_a250": "fdm_linear2",
+  "fdm_a250_bk": "fdm_a250",
+  "fdm_a250_dual": "fdm_linear2_dual",
+  "fdm_a250_dual_bk": "fdm_a250_dual",
+  "fdm_a250_dual_qs": "fdm_a250_dual",
+  "fdm_a250_dual_qs_bk": "fdm_a250_dual",
+  "fdm_a250_qs": "fdm_a250",
+  "fdm_a250_qs_bk": "fdm_a250",
+  "fdm_a350": "fdm_linear2",
+  "fdm_a350_bk": "fdm_a350",
+  "fdm_a350_dual": "fdm_linear2_dual",
+  "fdm_a350_dual_bk": "fdm_a350_dual",
+  "fdm_a350_dual_qs": "fdm_a350_dual",
+  "fdm_a350_dual_qs_bk": "fdm_a350_dual",
+  "fdm_a350_qs": "fdm_a350",
+  "fdm_a350_qs_bk": "fdm_a350",
+  "fdm_a400": "fdm_linear2_dual",
+  "fdm_common": null,
+  "fdm_idex": "fdm_common",
+  "fdm_klipper": null,
+  "fdm_linear2": "fdm_common",
+  "fdm_linear2_dual": "fdm_linear2",
+  "fdm_test": "fdm_toolchanger",
+  "fdm_toolchanger": "fdm_klipper"
+}

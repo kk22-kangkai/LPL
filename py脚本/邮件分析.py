@@ -1,65 +1,61 @@
-import os
-import email
-from email.parser import BytesParser
-from email.policy import default
-from datetime import datetime
-import re
+import pandas as pd
 
-def parse_received_headers(headers):
-    received = headers.get_all("Received", [])
-    parsed = []
+# --- ⚙️ Configuration ---
+# You can easily change your settings here
+INPUT_FILE = "1.xlsx"
+OUTPUT_FILE = "merged_output.xlsx"
+# To merge the first 5 columns, set to: df.columns[:5]
+# To merge specific columns by name, set to: ['ColumnName1', 'ColumnName2']
+COLUMNS_TO_MERGE = None  # If None, it will default to the first 5 columns
+NEW_COLUMN_NAME = '合并结果'
+SEPARATOR = '-'
 
-    for entry in received:
-        # 提取时间戳
-        match = re.search(r';\s*(.+)', entry)
-        timestamp = match.group(1).strip() if match else "N/A"
-        parsed.append({
-            "hop": entry.split("\n")[0][:80] + ("..." if len(entry) > 80 else ""),
-            "timestamp": timestamp
-        })
+# --- 🚀 Main Script ---
+print(f"🔄 Starting to process file: {INPUT_FILE}")
 
-    return parsed
+try:
+    # 1. Read the Excel file
+    df = pd.read_excel(INPUT_FILE, engine="openpyxl")
+    print("✅ File read successfully.")
 
-def parse_eml_file(path):
-    with open(path, 'rb') as f:
-        msg = BytesParser(policy=default).parse(f)
+    # 2. Determine which columns to merge
+    if COLUMNS_TO_MERGE is None:
+        # Default to the first 5 columns if not specified
+        merge_cols = df.columns[:5]
+        print(f"ℹ️ No columns specified, defaulting to first 5: {list(merge_cols)}")
+    else:
+        merge_cols = COLUMNS_TO_MERGE
+        print(f"ℹ️ Merging specified columns: {merge_cols}")
 
-    subject = msg.get('Subject', '')
-    date = msg.get('Date', '')
-    sender = msg.get('From', '')
-    recipient = msg.get('To', '')
-    received = parse_received_headers(msg)
+    # 3. Merge data using a high-performance vectorized method
+    # This approach is significantly faster than using 'apply' row-by-row.
 
-    return {
-        "file": os.path.basename(path),
-        "subject": subject,
-        "from": sender,
-        "to": recipient,
-        "date": date,
-        "received_chain": received[::-1]  # 倒序，最早的在前
-    }
+    # a. Stack the selected columns into a single series, which automatically drops empty (NaN) cells.
+    stacked = df[merge_cols].stack()
 
-def scan_eml_directory(folder):
-    for root, _, files in os.walk(folder):
-        for name in files:
-            if name.endswith('.eml'):
-                path = os.path.join(root, name)
-                data = parse_eml_file(path)
+    # b. Convert all values to strings and strip leading/trailing whitespace.
+    stripped = stacked.astype(str).str.strip()
 
-                print(f"\n📩 文件: {data['file']}")
-                print(f" 主题: {data['subject']}")
-                print(f" 发件人: {data['from']}")
-                print(f" 收件人: {data['to']}")
-                print(f" 邮件头时间: {data['date']}")
-                print(" ✉️ 传输路径:")
-                for i, hop in enumerate(data['received_chain'], 1):
-                    print(f"  [{i}] {hop['timestamp']} — {hop['hop']}")
+    # c. Filter out any remaining empty strings (e.g., cells that only contained spaces).
+    non_empty = stripped[stripped != '']
 
-if __name__ == "__main__":
-    import sys
-    if len(sys.argv) < 2:
-        print("用法: python parse_eml_flow.py <文件夹路径>")
-        sys.exit(1)
+    # d. Group by the original row index and join the values with the separator.
+    merged_series = non_empty.groupby(level=0).agg(SEPARATOR.join)
 
-    folder_path = sys.argv[1]
-    scan_eml_directory("C:/Users/circu/Desktop/Login verification - acq")
+    # 4. Add the merged result to a new column in the DataFrame
+    df[NEW_COLUMN_NAME] = merged_series
+
+    # For rows that had no data to merge, the result will be NaN. Fill these with an empty string.
+    df[NEW_COLUMN_NAME].fillna('', inplace=True)
+    print("✅ Data merged successfully.")
+
+    # 5. Save the result to a new Excel file
+    df.to_excel(OUTPUT_FILE, index=False)
+    print(f"🎉 Process complete! Output saved to: {OUTPUT_FILE}")
+
+except FileNotFoundError:
+    print(f"❌ ERROR: Input file not found at '{INPUT_FILE}'")
+except KeyError:
+    print(f"❌ ERROR: One or more specified columns not found in the file. Please check COLUMNS_TO_MERGE.")
+except Exception as e:
+    print(f"❌ An unexpected error occurred: {e}")

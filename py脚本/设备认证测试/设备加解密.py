@@ -1,8 +1,16 @@
 import base64
+import json
 from binascii import unhexlify, hexlify
 from Crypto.Cipher import AES
 from Crypto.Util.Padding import pad, unpad
+import requests
 
+
+base_url='https://api.snapmaker.cn/api'
+base64_encoded_key = "NWEzNDBiODhjYTYyZWEzNDJiZWI3NjVkYmE4NTQ5NTk="
+nonce=428170
+username="lpl106464@gmail.com"
+pw ='be029a15c4cc2b85c146e4b855fff665ea2a7c19267da576a019f0c9a33de683'
 def aes_ecb_encrypt(key_bytes, plain_text):
     """
     使用 AES ECB 模式对明文进行加密，并返回 Base64 编码的密文。
@@ -20,7 +28,9 @@ def aes_ecb_encrypt(key_bytes, plain_text):
     except Exception as e:
         print(f"加密失败: {e}")
         return None
-
+def get_bearer_auth_header(token):
+    """生成 Bearer Authorization 请求头。"""
+    return {"Authorization": f"Bearer {token}"}
 def aes_ecb_decrypt(key_bytes, base64_encoded_data):
     """
     使用 AES ECB 模式对 Base64 编码的密文进行解密，并返回原始明文。
@@ -37,40 +47,75 @@ def aes_ecb_decrypt(key_bytes, base64_encoded_data):
     except Exception as e:
         print(f"解密失败: {e}")
         return None
+def get_basic_auth_header(client_id, client_secret):
+            """生成 Basic Authorization 请求头。"""
+            credentials = f"{client_id}:{client_secret}"
+            encoded_credentials = base64.b64encode(credentials.encode()).decode()
+            return {"Authorization": f"Basic {encoded_credentials}",
+                    "Content-Type": "application/json"
+                    }
+def user_login():
+    url = f"{base_url}/oauth2/token"
+    print(url)
+    params = {
+        "grant_type": "password",
+        "username": username,
+        "password":pw}
+    headers = get_basic_auth_header('mall-app', '123456')
+    rq = requests.post(url, params=params, headers=headers)
+    data = json.loads(rq.text)
+    token=data["data"]["access_token"]
+    return token
 
-if __name__ == "__main__":
-    # --- 1. 密钥准备 ---
-    # 这是你的原始 Base64 编码的密钥字符串
-    base64_encoded_key = "NWEzNDBiODhjYTYyZWEzNDJiZWI3NjVkYmE4NTQ5NTk="
+def device_action(sn,sign):
+    url = f"{base_url}/oauth2/token"
+    params = {
+        "grant_type": "snapmaker_device",
+        "sign": sign,
+        "scope": "mqtt",
+        "sn": sn,
+        "productCode": "LAVATEST123",
+        "nonce": nonce,
+        "refresh": "true"}
+    headers = get_basic_auth_header('mall-app', '123456')
 
-    # Base64 解码得到十六进制密钥字符串 "5a340b88ca62ea342beb765dba854959"
-    hex_key_bytes = base64.b64decode(base64_encoded_key)
-    hex_key_string = hex_key_bytes.decode('ascii')
+    re = requests.request("POST", url, params=params, headers=headers)
+    return json.loads(re.text)
+def device_post_code(sn,sign,operate):
+    url = f"{base_url}/device/connect/auth"
+    json_data = {
+        "sign": sign,
+        "sn": sn,
+        "productCode": "LAVATEST123",
+        "nonce": nonce,
+        "operate": operate}
+    rq = requests.request("POST", url, json=json_data)
+    data=json.loads(rq.text)
+    auth_code = data['data']['authCode']
+    return auth_code
+def bind_user_to_device(operate,nickname,authCode,token):
+    url =f"{base_url}/device/connect/auth"
+    json_data = {
+        "nickname": nickname,
+        "authCode": authCode,
+        "operate": operate}
+    headers = {
+        "Content-Type": "application/json",
+        **get_bearer_auth_header(token)  # 合并授权头
+    }
+    rq = requests.request("POST", url, json=json_data, headers=headers)
+    return  json.loads(rq.text)
+def search_device(token):
+    url = f"{base_url}/device/list"
+    headers = {
+        "Content-Type": "application/json",
+        **get_bearer_auth_header(token)  # 合并授权头
+    }
+    json_data = {
+    "pageIndex": 1,
+    "pageRows": 10
+}
 
-    # 十六进制解码得到真正的 AES 二进制密钥（16 字节，128 位）
-    actual_aes_key = unhexlify(hex_key_string)
+    rq = requests.request("POST", url, headers=headers ,json=json_data)
+    return json.loads(rq.text)
 
-    print(f"原始 Base64 密钥: {base64_encoded_key}")
-    print(f"解码后的十六进制密钥字符串: {hex_key_string}")
-    print(f"实际 AES 密钥字节长度: {len(actual_aes_key)} bytes")
-    print("------------------------------------")
-
-    # --- 2. 加密过程 ---
-    plain_text_to_encrypt = "SNlavatest123&productCode=LAVATEST123&nonce=232143"
-    print(f"待加密明文: {plain_text_to_encrypt}")
-
-    encrypted_base64_result = aes_ecb_encrypt(actual_aes_key, plain_text_to_encrypt)
-    if encrypted_base64_result:
-        print(f"加密后的 Base64 密文: {encrypted_base64_result}")
-    print("------------------------------------")
-
-    # --- 3. 解密过程 ---
-    # 使用之前加密得到的密文进行解密
-    if encrypted_base64_result:
-        decrypted_result = aes_ecb_decrypt(actual_aes_key, encrypted_base64_result)
-        if decrypted_result:
-            print(f"解密后的明文: {decrypted_result}")
-
-            # --- 4. 验证 ---
-            is_match = (plain_text_to_encrypt == decrypted_result)
-            print(f"明文与解密结果是否匹配: {'✅ 匹配' if is_match else '❌ 不匹配'}")

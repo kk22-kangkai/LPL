@@ -1,0 +1,66 @@
+
+    <!DOCTYPE html>
+    <html lang="zh">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>继承结构可视化</title>
+        
+    <style>
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; margin: 20px; background-color: #f8f9fa; }
+        h1 { color: #343a40; }
+        ul { list-style-type: none; padding-left: 20px; }
+        .caret {
+            cursor: pointer;
+            user-select: none; /* 防止双击时选中文本 */
+            display: inline-block;
+            margin-right: 6px;
+        }
+        .caret::before {
+            content: "►"; /* 折叠时的箭头 */
+            color: #6c757d;
+            display: inline-block;
+            transition: transform 0.1s ease-in-out;
+        }
+        .caret-down::before {
+            transform: rotate(90deg); /* 展开时的箭头 */
+        }
+        .nested {
+            display: none; /* 默认隐藏子树 */
+        }
+        .active {
+            display: block; /* 点击后显示子树 */
+        }
+        .node-name { font-size: 16px; color: #212529; }
+        .node-name.leaf { margin-left: 18px; color: #495057; }
+        li { padding: 4px 0; }
+    </style>
+    
+    </head>
+    <body>
+        <h1>继承结构可视化</h1>
+        <ul id="treeRoot">
+            <li><span class="caret"></span><span class="node-name">fdm_common</span><ul class="nested"><li><span class="caret"></span><span class="node-name">fdm_idex</span><ul class="nested"><li><span class="node-name leaf">Snapmaker J1 (0.2 nozzle)</span></li><li><span class="node-name leaf">Snapmaker J1 (0.4 nozzle)</span></li><li><span class="node-name leaf">Snapmaker J1 (0.6 nozzle)</span></li><li><span class="node-name leaf">Snapmaker J1 (0.8 nozzle)</span></li></ul></li><li><span class="caret"></span><span class="node-name">fdm_linear2</span><ul class="nested"><li><span class="caret"></span><span class="node-name">fdm_a250</span><ul class="nested"><li><span class="node-name leaf">Snapmaker A250 (0.2 nozzle)</span></li><li><span class="node-name leaf">Snapmaker A250 (0.4 nozzle)</span></li><li><span class="node-name leaf">Snapmaker A250 (0.6 nozzle)</span></li><li><span class="node-name leaf">Snapmaker A250 (0.8 nozzle)</span></li><li><span class="caret"></span><span class="node-name">fdm_a250_bk</span><ul class="nested"><li><span class="node-name leaf">Snapmaker A250 BKit (0.2 nozzle)</span></li><li><span class="node-name leaf">Snapmaker A250 BKit (0.4 nozzle)</span></li><li><span class="node-name leaf">Snapmaker A250 BKit (0.6 nozzle)</span></li><li><span class="node-name leaf">Snapmaker A250 BKit (0.8 nozzle)</span></li></ul></li><li><span class="caret"></span><span class="node-name">fdm_a250_qs</span><ul class="nested"><li><span class="node-name leaf">Snapmaker A250 QSKit (0.2 nozzle)</span></li><li><span class="node-name leaf">Snapmaker A250 QSKit (0.4 nozzle)</span></li><li><span class="node-name leaf">Snapmaker A250 QSKit (0.6 nozzle)</span></li><li><span class="node-name leaf">Snapmaker A250 QSKit (0.8 nozzle)</span></li></ul></li><li><span class="caret"></span><span class="node-name">fdm_a250_qs_bk</span><ul class="nested"><li><span class="node-name leaf">Snapmaker A250 QS+B Kit (0.2 nozzle)</span></li><li><span class="node-name leaf">Snapmaker A250 QS+B Kit (0.4 nozzle)</span></li><li><span class="node-name leaf">Snapmaker A250 QS+B Kit (0.6 nozzle)</span></li><li><span class="node-name leaf">Snapmaker A250 QS+B Kit (0.8 nozzle)</span></li></ul></li></ul></li><li><span class="caret"></span><span class="node-name">fdm_a350</span><ul class="nested"><li><span class="node-name leaf">Snapmaker A350 (0.2 nozzle)</span></li><li><span class="node-name leaf">Snapmaker A350 (0.4 nozzle)</span></li><li><span class="node-name leaf">Snapmaker A350 (0.6 nozzle)</span></li><li><span class="node-name leaf">Snapmaker A350 (0.8 nozzle)</span></li><li><span class="caret"></span><span class="node-name">fdm_a350_bk</span><ul class="nested"><li><span class="node-name leaf">Snapmaker A350 BKit (0.2 nozzle)</span></li><li><span class="node-name leaf">Snapmaker A350 BKit (0.4 nozzle)</span></li><li><span class="node-name leaf">Snapmaker A350 BKit (0.6 nozzle)</span></li><li><span class="node-name leaf">Snapmaker A350 BKit (0.8 nozzle)</span></li></ul></li><li><span class="caret"></span><span class="node-name">fdm_a350_qs</span><ul class="nested"><li><span class="node-name leaf">Snapmaker A350 QSKit (0.2 nozzle)</span></li><li><span class="node-name leaf">Snapmaker A350 QSKit (0.4 nozzle)</span></li><li><span class="node-name leaf">Snapmaker A350 QSKit (0.6 nozzle)</span></li><li><span class="node-name leaf">Snapmaker A350 QSKit (0.8 nozzle)</span></li></ul></li><li><span class="caret"></span><span class="node-name">fdm_a350_qs_bk</span><ul class="nested"><li><span class="node-name leaf">Snapmaker A350 QS+B Kit (0.2 nozzle)</span></li><li><span class="node-name leaf">Snapmaker A350 QS+B Kit (0.4 nozzle)</span></li><li><span class="node-name leaf">Snapmaker A350 QS+B Kit (0.6 nozzle)</span></li><li><span class="node-name leaf">Snapmaker A350 QS+B Kit (0.8 nozzle)</span></li></ul></li></ul></li><li><span class="caret"></span><span class="node-name">fdm_linear2_dual</span><ul class="nested"><li><span class="caret"></span><span class="node-name">fdm_a250_dual</span><ul class="nested"><li><span class="node-name leaf">Snapmaker A250 Dual (0.2 nozzle)</span></li><li><span class="node-name leaf">Snapmaker A250 Dual (0.4 nozzle)</span></li><li><span class="node-name leaf">Snapmaker A250 Dual (0.6 nozzle)</span></li><li><span class="node-name leaf">Snapmaker A250 Dual (0.8 nozzle)</span></li><li><span class="caret"></span><span class="node-name">fdm_a250_dual_bk</span><ul class="nested"><li><span class="node-name leaf">Snapmaker A250 Dual BKit (0.2 nozzle)</span></li><li><span class="node-name leaf">Snapmaker A250 Dual BKit (0.4 nozzle)</span></li><li><span class="node-name leaf">Snapmaker A250 Dual BKit (0.6 nozzle)</span></li><li><span class="node-name leaf">Snapmaker A250 Dual BKit (0.8 nozzle)</span></li></ul></li><li><span class="caret"></span><span class="node-name">fdm_a250_dual_qs</span><ul class="nested"><li><span class="node-name leaf">Snapmaker A250 Dual QSKit (0.2 nozzle)</span></li><li><span class="node-name leaf">Snapmaker A250 Dual QSKit (0.4 nozzle)</span></li><li><span class="node-name leaf">Snapmaker A250 Dual QSKit (0.6 nozzle)</span></li><li><span class="node-name leaf">Snapmaker A250 Dual QSKit (0.8 nozzle)</span></li></ul></li><li><span class="caret"></span><span class="node-name">fdm_a250_dual_qs_bk</span><ul class="nested"><li><span class="node-name leaf">Snapmaker A250 Dual QS+B Kit (0.2 nozzle)</span></li><li><span class="node-name leaf">Snapmaker A250 Dual QS+B Kit (0.4 nozzle)</span></li><li><span class="node-name leaf">Snapmaker A250 Dual QS+B Kit (0.6 nozzle)</span></li><li><span class="node-name leaf">Snapmaker A250 Dual QS+B Kit (0.8 nozzle)</span></li></ul></li></ul></li><li><span class="caret"></span><span class="node-name">fdm_a350_dual</span><ul class="nested"><li><span class="node-name leaf">Snapmaker A350 Dual (0.2 nozzle)</span></li><li><span class="node-name leaf">Snapmaker A350 Dual (0.4 nozzle)</span></li><li><span class="node-name leaf">Snapmaker A350 Dual (0.6 nozzle)</span></li><li><span class="node-name leaf">Snapmaker A350 Dual (0.8 nozzle)</span></li><li><span class="caret"></span><span class="node-name">fdm_a350_dual_bk</span><ul class="nested"><li><span class="node-name leaf">Snapmaker A350 Dual BKit (0.2 nozzle)</span></li><li><span class="node-name leaf">Snapmaker A350 Dual BKit (0.4 nozzle)</span></li><li><span class="node-name leaf">Snapmaker A350 Dual BKit (0.6 nozzle)</span></li><li><span class="node-name leaf">Snapmaker A350 Dual BKit (0.8 nozzle)</span></li></ul></li><li><span class="caret"></span><span class="node-name">fdm_a350_dual_qs</span><ul class="nested"><li><span class="node-name leaf">Snapmaker A350 Dual QSKit (0.2 nozzle)</span></li><li><span class="node-name leaf">Snapmaker A350 Dual QSKit (0.4 nozzle)</span></li><li><span class="node-name leaf">Snapmaker A350 Dual QSKit (0.6 nozzle)</span></li><li><span class="node-name leaf">Snapmaker A350 Dual QSKit (0.8 nozzle)</span></li></ul></li><li><span class="caret"></span><span class="node-name">fdm_a350_dual_qs_bk</span><ul class="nested"><li><span class="node-name leaf">Snapmaker A350 Dual QS+B Kit (0.2 nozzle)</span></li><li><span class="node-name leaf">Snapmaker A350 Dual QS+B Kit (0.4 nozzle)</span></li><li><span class="node-name leaf">Snapmaker A350 Dual QS+B Kit (0.6 nozzle)</span></li><li><span class="node-name leaf">Snapmaker A350 Dual QS+B Kit (0.8 nozzle)</span></li></ul></li></ul></li><li><span class="caret"></span><span class="node-name">fdm_a400</span><ul class="nested"><li><span class="node-name leaf">Snapmaker Artisan (0.2 nozzle)</span></li><li><span class="node-name leaf">Snapmaker Artisan (0.4 nozzle)</span></li><li><span class="node-name leaf">Snapmaker Artisan (0.6 nozzle)</span></li><li><span class="node-name leaf">Snapmaker Artisan (0.8 nozzle)</span></li></ul></li></ul></li></ul></li></ul></li><li><span class="caret"></span><span class="node-name">fdm_klipper</span><ul class="nested"><li><span class="caret"></span><span class="node-name">fdm_toolchanger</span><ul class="nested"><li><span class="caret"></span><span class="node-name">fdm_test</span><ul class="nested"><li><span class="node-name leaf">Snapmaker test (0.4 nozzle)</span></li></ul></li></ul></li></ul></li>
+        </ul>
+        
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            var toggler = document.getElementsByClassName("caret");
+            for (var i = 0; i < toggler.length; i++) {
+                toggler[i].addEventListener("click", function() {
+                    // 切换箭头的方向
+                    this.classList.toggle("caret-down");
+
+                    // 找到嵌套的 ul 列表并切换其显示状态
+                    var nested = this.parentElement.querySelector(".nested");
+                    if (nested) {
+                        nested.classList.toggle("active");
+                    }
+                });
+            }
+        });
+    </script>
+    
+    </body>
+    </html>
+    
